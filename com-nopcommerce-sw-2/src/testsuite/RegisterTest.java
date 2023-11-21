@@ -26,6 +26,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.Random;
 
@@ -51,22 +52,28 @@ public class RegisterTest extends BaseTest {
     public void userShouldNavigateToRegisterPageSuccessfully() {
         driver.findElement(By.xpath("//a[text()='Register']")).click();
         System.out.println("Navigate to Registration successfully.");
-        Assert.assertEquals("Register", "Register");
+        WebElement getRegisterText = driver.findElement(By.xpath("//h1[text()='Register']"));
+        Assert.assertEquals("Register", getRegisterText.getText());
 
-        /**
-         * 2. userSholdRegisterAccountSuccessfully *
-         * click on the ‘Register’ link
-         * * Select gender radio button
-         * * Enter First name
-         * * Enter Last name
-         * * Select Day Month and Year
-         * * Enter Email address
-         * * Enter Password
-         * * Enter Confirm password
-         * * Click on REGISTER button
-         * * Verify the text 'Your registration
-         * completed’
-         */
+    }
+
+    /**
+     * 2. userSholdRegisterAccountSuccessfully *
+     * click on the ‘Register’ link
+     * * Select gender radio button
+     * * Enter First name
+     * * Enter Last name
+     * * Select Day Month and Year
+     * * Enter Email address
+     * * Enter Password
+     * * Enter Confirm password
+     * * Click on REGISTER button
+     * * Verify the text 'Your registration
+     * completed’
+     */
+    @Test
+    public void userSholdRegisterAccountSuccessfully(){
+        driver.findElement(By.xpath("//a[text()='Register']")).click();
         driver.findElement(By.id("gender-female")).click();
         driver.findElement(By.id("FirstName")).sendKeys(fName + x);
         driver.findElement(By.id("LastName")).sendKeys(lName + x);
@@ -78,8 +85,8 @@ public class RegisterTest extends BaseTest {
         driver.findElement(By.xpath("//input[@id='Password']")).sendKeys("James123");
         driver.findElement(By.xpath("//input[@id='ConfirmPassword']")).sendKeys("James123");
         driver.findElement(By.xpath("//button[@id='register-button']")).click();
-
-        Assert.assertEquals("Your registration completed", "Your registration completed");
+        WebElement getSuccesfullRegisterMessage = driver.findElement(By.xpath("//div[@class='result']"));
+        Assert.assertEquals("Your registration completed", getSuccesfullRegisterMessage.getText());
     }
 
     @After

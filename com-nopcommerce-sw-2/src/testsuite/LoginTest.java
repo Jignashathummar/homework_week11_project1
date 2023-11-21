@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 /**
  * 1. userShouldNavigateToLoginPageSuccessfully *
@@ -37,21 +38,33 @@ public class LoginTest extends BaseTest {
     @Test
     public void userShouldNavigateToLoginPageSuccessfully() {
         driver.findElement(By.linkText("Log in")).click();
-        Assert.assertEquals("User Navigate to Login Page", "Welcome, Please Sign In!", "Welcome, Please Sign In!");
+        WebElement getLoingClickVerification = driver.findElement(By.xpath("//h1[text()='Welcome, Please Sign In!']"));
+        Assert.assertEquals("User Navigate to Login Page", "Welcome, Please Sign In!", getLoingClickVerification.getText());
+    }
+    @Test
+    public void userShouldLoginSuccessfullyWithValidCredentials(){
+        driver.findElement(By.linkText("Log in")).click();
+        WebElement getLoingClickVerification = driver.findElement(By.xpath("//h1[text()='Welcome, Please Sign In!']"));
+        Assert.assertEquals("User Navigate to Login Page", "Welcome, Please Sign In!", getLoingClickVerification.getText());
 
-        driver.findElement(By.id("Email")).sendKeys("julee1234@gmail.com");
-        driver.findElement(By.id("Password")).sendKeys("julee@123");
+        driver.findElement(By.id("Email")).sendKeys("james36@gmail.com");
+        driver.findElement(By.id("Password")).sendKeys("James123");
         driver.findElement(By.xpath("//button[@type='submit' and @class='button-1 login-button']")).click();
-        Assert.assertEquals("User logged in successfully", "Log out", "Log out");
-        driver.findElement(By.xpath("//a[text()='Log out']")).click();
+        WebElement getLogoutText = driver.findElement(By.xpath("//a[text()='Log out']"));
+        Assert.assertEquals("User logged in successfully", "Log out", getLogoutText.getText());
+    }
 
+    @Test
+    public void verifyTheUnsucLoginErrorMessage(){
         driver.findElement(By.linkText("Log in")).click();
         driver.findElement(By.id("Email")).sendKeys("prime123@gmail.com");
         driver.findElement(By.id("Password")).sendKeys("prime123");
         driver.findElement(By.xpath("//button[@type='submit' and @class='button-1 login-button']")).click();
+        WebElement getUnsuccessfulLoginErrMsg = driver.findElement(By.xpath("//div[text()='Login was unsuccessful. Please correct the errors and try again.']"));
+        System.out.println(getUnsuccessfulLoginErrMsg.getText());
         Assert.assertEquals("Login was unsuccessful. Please correct the errors and try again.\n" +
-                "No customer account found", "Login was unsuccessful. Please correct the errors and try again.\n" +
-                "No customer account found");
+                "No customer account found", getUnsuccessfulLoginErrMsg.getText());
+
     }
 
     @After

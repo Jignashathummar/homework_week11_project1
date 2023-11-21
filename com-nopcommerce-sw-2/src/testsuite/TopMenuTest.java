@@ -40,60 +40,85 @@ public class TopMenuTest extends BaseTest {
         openBrowser(baseUrl);
     }
 
+    /*
+     * 1. userShouldNavigateToComputerPageSuccessfully
+     * * click on the ‘Computers’ Tab
+     * * Verify the text ‘Computers’
+     */
     @Test
     public void userShouldNavigateToComputerPageSuccessfully() {
-        /*
-         * 1. userShouldNavigateToComputerPageSuccessfully
-         * * click on the ‘Computers’ Tab
-         * * Verify the text ‘Computers’
-         */
         driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[text()='Computers ']")).click();
-        Assert.assertEquals("Computers", "Computers");
-        /*
-         * 2. userShouldNavigateToElectronicsPageSuccessfully
-         * * click on the ‘Electronics’ Tab
-         * * Verify the text ‘Electronics’
-         */
-        driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[text()='Electronics ']")).click();
-        Assert.assertEquals("Electronics", "Electronics");
-        /*
-         * 3. userShouldNavigateToApparelPageSuccessfully
-         * * click on the ‘Apparel’ Tab
-         * * Verify the text ‘Apparel’
-         */
-        driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[text()='Apparel ']")).click();
-        Assert.assertEquals("Apparel", "Apparel");
-        /*
-         *4. userShouldNavigateToDigitalDownloadsPageSuccessfully
-         * * click on the ‘Digital downloads’ Tab
-         * * Verify the text ‘Digital downloads’
-         */
-        driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[text()='Digital downloads ']")).click();
-        Assert.assertEquals("Digital downloads", "Digital downloads");
-        /*
-         * 5. userShouldNavigateToBooksPageSuccessfully
-         * * click on the ‘Books’ Tab
-         * * Verify the text ‘Books’
-         */
-        driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[text()='Books ']")).click();
-        Assert.assertEquals("Books", "Books");
-        /*
-         * 6. userShouldNavigateToJewelryPageSuccessfully
-         * * click on the ‘Jewelry’ Tab
-         * * Verify the text ‘Jewelry’
-         */
-        driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[text()='Jewelry ']")).click();
-        Assert.assertEquals("Jewelry", "Jewelry");
-        /*
-         * 7. userShouldNavigateToGiftCardsPageSuccessfully
-         * * click on the ‘Gift Cards’ Tab
-         * * Verify the text ‘Gift Cards’
-         */
-        driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[text()='Gift Cards ']")).click();
-        Assert.assertEquals("Gift Cards", "Gift Cards");
+        Assert.assertEquals("User Should Successfully Navigate to Computers Page","Computers", driver.findElement(By.className("page-title")).getText());
+
 
     }
 
+    /* 2. userShouldNavigateToElectronicsPageSuccessfully
+     * * click on the ‘Electronics’ Tab
+     * * Verify the text ‘Electronics’
+     */
+    @Test
+    public void userShouldNavigateToElectronicsPageSuccessfully() {
+        driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[text()='Electronics ']")).click();
+        Assert.assertEquals("User Should Successfully Navigate to Electronics Page","Electronics", driver.findElement(By.className("page-title")).getText());
+    }
+
+    /*
+     * 3. userShouldNavigateToApparelPageSuccessfully
+     * * click on the ‘Apparel’ Tab
+     * * Verify the text ‘Apparel’
+     */
+    @Test
+    public void userShouldNavigateToApparelPageSuccessfully() {
+
+        driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[text()='Apparel ']")).click();
+        Assert.assertEquals("User Should Successfully Navigate to Apparel Page","Apparel", driver.findElement(By.className("page-title")).getText());
+    }
+    /*
+     *4. userShouldNavigateToDigitalDownloadsPageSuccessfully
+     * * click on the ‘Digital downloads’ Tab
+     * * Verify the text ‘Digital downloads’
+     */
+
+    @Test
+    public void userShouldNavigateToDigitalDownloadsPageSuccessfully() {
+        driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[text()='Digital downloads ']")).click();
+        Assert.assertEquals("User Should Successfully Navigate to Digital downloads Page","Digital downloads", driver.findElement(By.className("page-title")).getText());
+    }
+
+    /*
+     * 5. userShouldNavigateToBooksPageSuccessfully
+     * * click on the ‘Books’ Tab
+     * * Verify the text ‘Books’
+     */
+    @Test
+    public void userShouldNavigateToBooksPageSuccessfully() {
+        driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[text()='Books ']")).click();
+        Assert.assertEquals("User Should Successfully Navigate to Books Page","Books", driver.findElement(By.className("page-title")).getText());
+    }
+
+    /*
+     * 6. userShouldNavigateToJewelryPageSuccessfully
+     * * click on the ‘Jewelry’ Tab
+     * * Verify the text ‘Jewelry’
+     */
+    @Test
+    public void userShouldNavigateToJewelryPageSuccessfully() {
+        driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[text()='Jewelry ']")).click();
+        Assert.assertEquals("User Should Successfully Navigate to Jewelry Page","Jewelry", driver.findElement(By.className("page-title")).getText());
+    }
+
+    /*
+     * 7. userShouldNavigateToGiftCardsPageSuccessfully
+     * * click on the ‘Gift Cards’ Tab
+     * * Verify the text ‘Gift Cards’
+     */
+    @Test
+    public void userShouldNavigateToGiftCardsPageSuccessfully() {
+        driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[text()='Gift Cards ']")).click();
+        Assert.assertEquals("User Should Successfully Navigate to Gift Cards Page","Gift Cards", driver.findElement(By.className("page-title")).getText());
+
+    }
     @After
     public void close() {
         closeBrowser();
